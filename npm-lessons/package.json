@@ -1,0 +1,19 @@
+{
+  "name": "npm-lessons",
+  "version": "1.1.0",
+  "description": "Lessons about NPM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Musobek Madrimov",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^6.7.2",
+    "nagap-math-lib": "^1.0.0",
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.13.6"
+  }
+}
