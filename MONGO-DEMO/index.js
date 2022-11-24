@@ -9,11 +9,43 @@ mongoose
   });
 
 const bookSchema = new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true, minlength: 3, maxlength: 100 },
   author: String,
-  tags: [String],
+  tags: {
+    type: String,
+    validate: {
+      validator: function (val) {
+        return  val && val.length > 0
+      },
+      message: "Kitobning kamida bitta tegi bo'lishi kerak"
+    }
+  },
   date: { type: Date, default: Date.now },
-  isPublished: Boolean,
+  isPublished: {
+    type: Boolean,
+    validate: {
+      isAysnc: true,
+      validator: function(param, callback) {
+        setTimeout((param) => {
+          const result = param;
+          callback(param);
+        }, 5000);
+      }
+    }
+  },
+  price: {
+    type: Number,
+    required: function () {
+      return this.isPublished;
+    },
+    min: 10,
+    max: 300
+  },
+  category: {
+    type: String, 
+    required: true,
+    enum: ["biography", "psycology" ,"self-improvement"]
+  }
 });
 
 const Book = new mongoose.model("Book", bookSchema);
@@ -23,17 +55,22 @@ async function createBook() {
     name: "NodeJS to'liq qo'llanma",
     author: "Musobek Madrimov",
     tags: ["JS", "Dasturlash", "Node"],
-    isPublished: true,
+    isPublished: false,
+    price: 100,
+    category: "self-improvement"
   });
 
-  const savedBook = await book.save();
-
-  console.log(savedBook);
+  try {
+    const savedBook = await book.save();
+    console.log(savedBook);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function getBooks() {
-//   const pageNumber = 3;
-//   const pageSize = 10;
+  //   const pageNumber = 3;
+  //   const pageSize = 10;
   const books = await Book.find({
     author: "Atabayev Muhammad",
     // price: { $gt: 10, $lt: 20 },
@@ -53,4 +90,42 @@ async function getBooks() {
   console.log(books);
 }
 
-getBooks();
+async function updateBook1(id) {
+  const book = await Book.findById(id);
+  if (!book) {
+    return;
+  }
+
+  // book.isPublished = true;
+  // book.author = "Musobek Madrimov";
+
+  book.set({
+    isPublished: true,
+    author: "Musobek Madrimov",
+  });
+
+  const updatedBook = await book.save();
+  console.log(updatedBook);
+}
+
+async function updateBook2(id) {
+  const result = await Book.update(
+    { _id: id },
+    {
+      $set: {
+        author: "Musobek",
+        isPublished: false,
+      },
+    }
+  );
+
+  console.log(result);
+}
+
+async function deleteBook(id) {
+  const result = await Book.findByIdAndRemove({ _id: id });
+  // const result = await Book.deleteOne({ _id: id });
+  console.log(result);
+}
+
+createBook();

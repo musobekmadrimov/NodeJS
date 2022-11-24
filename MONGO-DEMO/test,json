@@ -1,32 +1,52 @@
 [
-    {
-        "name": "NodeJS to'liq qo'llanma",
-        "author": "Musobek Madrimov",
-        "tags": ["JS", "Dasturlash", "Node"],
-        "isPublished": "true",
-      },
-      {
-        "name": "Good to great",
-        "author": "Falonchi Fistonchiyev",
-        "tags": ["Business", "Company", "Development"],
-        "isPublished": "true",
-      },
-      {
-        "name": "Atomic Habits",
-        "author": "Shohrux Zaripov",
-        "tags": ["Development", "Self-improvment", "Habits"],
-        "isPublished": "true",
-      },
-      {
-        "name": "A million dollar mistakes",
-        "author": "Saidov Murodbek",
-        "tags": ["Pavel Annekov", "Business", "Company"],
-        "isPublished": "true",
-      },
-      {
-        "name": "Rich dad poor dad",
-        "author": "Atabayev Muhammad",
-        "tags": ["Robert Kiosaki", "Business", "Money"],
-        "isPublished": "true",
-      },
+  {
+    "name": "NodeJS to'liq qo'llanma",
+    "author": "Musobek Madrimov",
+    "tags": [
+      "JS",
+      "Dasturlash",
+      "Node"
+    ],
+    "isPublished": "true"
+  },
+  {
+    "name": "Good to great",
+    "author": "Falonchi Fistonchiyev",
+    "tags": [
+      "Business",
+      "Company",
+      "Development"
+    ],
+    "isPublished": "true"
+  },
+  {
+    "name": "Atomic Habits",
+    "author": "Shohrux Zaripov",
+    "tags": [
+      "Development",
+      "Self-improvment",
+      "Habits"
+    ],
+    "isPublished": "true"
+  },
+  {
+    "name": "A million dollar mistakes",
+    "author": "Saidov Murodbek",
+    "tags": [
+      "Pavel Annekov",
+      "Business",
+      "Company"
+    ],
+    "isPublished": "true"
+  },
+  {
+    "name": "Rich dad poor dad",
+    "author": "Atabayev Muhammad",
+    "tags": [
+      "Robert Kiosaki",
+      "Business",
+      "Money"
+    ],
+    "isPublished": "true"
+  }
 ]
